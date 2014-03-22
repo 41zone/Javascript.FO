@@ -2,6 +2,7 @@ package cc.fozone.javascript;
 
 import java.util.List;
 
+import cc.fozone.javascript.IHistoryHandler;
 import cc.fozone.javascript.struct.Prototype;
 import cc.fozone.javascript.utils.Property;
 
