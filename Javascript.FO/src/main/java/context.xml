@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xmlns:p="http://www.springframework.org/schema/p"
+	 xmlns:context="http://www.springframework.org/schema/context"
+	 xmlns:tx="http://www.springframework.org/schema/tx"
+	 xmlns:aop="http://www.springframework.org/schema/aop"
+	 xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd">
+	<context:annotation-config />
+	<context:component-scan base-package="*" />
+	<!-- Javascript Manager -->
+	<bean id="javascriptManager" class="cc.fozone.javascript.SimpleJavascriptManager"/>
+	<!-- Handler Register -->
+	<bean id="handlerRegister" class="cc.fozone.javascript.handler.HandlerRegister">
+		<property name="handlerMap">
+			<map>	
+				<entry key="@namespace" value-ref="namespaceHandler"/>
+				<entry key="@class" value-ref="prototypeHandler"/>
+				<entry key="@history" value-ref="historyHandler"/>
+				<entry key="@attribute" value-ref="attributeHandler"/>
+				<entry key="@method" value-ref="methodHandler"/>
+			</map>
+		</property>
+	</bean>
+	<!-- Common Register -->
+	<bean id="commonRegister" class="cc.fozone.javascript.handler.common.CommonRegister">
+		<property name="handlerMap">
+			<map>	
+				<entry key="@version" value-ref="versionHandler"/>
+				<entry key="@author" value-ref="authorHandler"/>
+				<entry key="@date" value-ref="dateHandler"/>
+				<entry key="@since" value-ref="sinceHandler"/>
+				<entry key="@deprecated" value-ref="deprecatedHandler"/>
+				<entry key="@email" value-ref="emailHandler"/>
+				<entry key="@see" value-ref="seeHandler"/>
+				<entry key="@text" value-ref="textHandler"/>
+			</map>
+		</property>
+	</bean>
+</beans>
